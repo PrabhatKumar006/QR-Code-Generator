@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #qrCode {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>QR Code Generator</h1>
+  <textarea id="inputText" placeholder="टेक्स्ट दर्ज करें"></textarea><br>
+  <button onclick="generateQRCode()">QR कोड बनाएं</button><br>
+  <div id="qrCode"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
+  <script>
+    function generateQRCode() {
+      var text = document.getElementById("inputText").value.trim();
+      if (text !== "") {
+        // Clear existing QR code if any
+        document.getElementById("qrCode").innerHTML = "";
+
+        // Convert Hindi text to UTF-8 format
+        var utf8Text = unescape(encodeURIComponent(text));
+
+        // Generate QR code
+        var qr = qrcode(0, 'H'); // Create QR code object
+        qr.addData(utf8Text); // Add UTF-8 encoded text to encode
+        qr.make(); // Generate QR code
+
+        // Append the generated QR code to the #qrCode div
+        var qrImg = qr.createImgTag();
+        document.getElementById("qrCode").innerHTML = qrImg;
+      }
+    }
+  </script>
+</body>
+</html>
