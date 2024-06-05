@@ -16,8 +16,8 @@
 </head>
 <body>
   <h1>QR Code Generator</h1>
-  <textarea id="inputText" placeholder="टेक्स्ट दर्ज करें"></textarea><br>
-  <button onclick="generateQRCode()">QR कोड बनाएं</button><br>
+  <textarea id="inputText" placeholder="ENTER THE TEXT"></textarea><br>
+  <button onclick="generateQRCode()">MAKE QR CODE</button><br>
   <div id="qrCode"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
